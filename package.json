@@ -1,0 +1,38 @@
+{
+	"name": "process-request",
+	"version": "1.0.12",
+	"description": "Async requests between node processes",
+	"type": "module",
+	"main": "./lib/index.js",
+	"module": "./lib/index.js",
+	"exports": {
+		".": "./lib/index.js",
+		"./sender": "./lib/Sender.js",
+		"./listener": "./lib/Listener.js"
+	},
+	"packageManager": "yarn@1.22.22",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nesvet/process-request.git"
+	},
+	"keywords": [
+		"process",
+		"child_process",
+		"spawn",
+		"fork",
+		"node",
+		"request",
+		"async"
+	],
+	"author": "Eugene Nesvetaev <dev@nesvet.dev> (https://nesvet.dev/)",
+	"license": "MIT",
+	"dependencies": {
+		"@nesvet/n": "^1"
+	},
+	"devDependencies": {
+		"@nesvet/eslint-config": "^1"
+	}
+}
