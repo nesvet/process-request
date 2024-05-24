@@ -9,5 +9,5 @@ $ npm install process-request
 Or
 
 ```sh
-$ yarn add process-request
+$ bun add process-request
 ```
