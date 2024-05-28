@@ -9,7 +9,7 @@ import {
 
 
 export class RequestSender {
-	constructor(process: Process, options: Options) {
+	constructor(process: Process, options?: Options) {
 		this.#process = process;
 		
 		const {

@@ -18,7 +18,7 @@ type RequestListenerOptions = Options & {
 
 
 export class RequestListener {
-	constructor(process: Process, options: RequestListenerOptions | RequestListenerHandlers | RequestListenerHandler) {
+	constructor(process: Process, options?: RequestListenerOptions | RequestListenerHandlers | RequestListenerHandler) {
 		this.#process = process;
 		
 		const {
@@ -31,6 +31,7 @@ export class RequestListener {
 			...typeof options == "function" ?
 				{ handler: options as RequestListenerHandler } :
 				(
+					options &&
 					!("requestHeader" in options) &&
 					!("responseHeader" in options) &&
 					!("handler" in options) &&
