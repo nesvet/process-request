@@ -1,4 +1,7 @@
-export type Process = NodeJS.Process & Required<Pick<NodeJS.Process, "send">>
+import { type ChildProcess } from "child_process";
+
+
+export type Process = ChildProcess & Required<Pick<NodeJS.Process, "send">>
 
 export type Options = {
 	requestHeader?: string,
