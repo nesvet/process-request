@@ -79,7 +79,7 @@ export class RequestListener {
 	};
 	
 	
-	static on(process: NodeJS.Process, options: RequestListenerOptions) {
+	static on(process: NodeJS.Process, options: RequestListenerHandler | RequestListenerHandlers | RequestListenerOptions) {
 		return new RequestListener(process, options);
 	}
 	
