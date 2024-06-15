@@ -1,15 +1,10 @@
 import { uid } from "@nesvet/n";
 import { defaults } from "./defaults.js";
-import {
-	type Options,
-	type Process,
-	type RequestMessage,
-	type ResponseMessage
-} from "./types";
+import { type Options, type RequestMessage, type ResponseMessage } from "./types";
 
 
 export class RequestSender {
-	constructor(process: Process, options?: Options) {
+	constructor(process: NodeJS.Process, options?: Options) {
 		this.#process = process;
 		
 		const {
@@ -29,7 +24,7 @@ export class RequestSender {
 		
 	}
 	
-	#process: Process;
+	#process: NodeJS.Process;
 	
 	#requestHeader: string;
 	#responseHeader: string;
@@ -45,7 +40,7 @@ export class RequestSender {
 			
 			this.#requestsMap.set(id, { resolve, reject });
 			
-			this.#process.send([ this.#requestHeader, id, kind, ...args ] as RequestMessage);
+			this.#process.send!([ this.#requestHeader, id, kind, ...args ] as RequestMessage);
 			
 		});
 	}
@@ -72,7 +67,7 @@ export class RequestSender {
 	};
 	
 	
-	static on(process: Process, options: Options) {
+	static on(process: NodeJS.Process, options: Options) {
 		return new RequestSender(process, options);
 	}
 	

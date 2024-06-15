@@ -1,24 +1,19 @@
 import { defaults } from "./defaults.js";
-import {
-	type Options,
-	type Process,
-	type RequestMessage,
-	type ResponseMessage
-} from "./types";
+import { type Options, type RequestMessage, type ResponseMessage } from "./types";
 
 
 type RequestListenerHandler = (...rest: unknown[]) => unknown;
 
 type RequestListenerHandlers = Record<string, RequestListenerHandler>;
 
-type RequestListenerOptions = Options & {
-	handler?: RequestListenerHandler
-	handlers?: RequestListenerHandlers
-};
+type RequestListenerOptions = {
+	handler?: RequestListenerHandler;
+	handlers?: RequestListenerHandlers;
+} & Options;
 
 
 export class RequestListener {
-	constructor(process: Process, options?: RequestListenerOptions | RequestListenerHandlers | RequestListenerHandler) {
+	constructor(process: NodeJS.Process, options?: RequestListenerHandler | RequestListenerHandlers | RequestListenerOptions) {
 		this.#process = process;
 		
 		const {
@@ -51,7 +46,7 @@ export class RequestListener {
 		
 	}
 	
-	#process: Process;
+	#process: NodeJS.Process;
 	
 	#requestHeader: string;
 	#responseHeader: string;
@@ -77,14 +72,14 @@ export class RequestListener {
 							{ ...error, message: error.message } :
 							error;
 				}
-				this.#process.send([ this.#responseHeader, id, responseError, result ] as ResponseMessage);
+				this.#process.send!([ this.#responseHeader, id, responseError, result ] as ResponseMessage);
 			}
 		}
 		
 	};
 	
 	
-	static on(process: Process, options: RequestListenerOptions) {
+	static on(process: NodeJS.Process, options: RequestListenerOptions) {
 		return new RequestListener(process, options);
 	}
 	
