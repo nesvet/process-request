@@ -34,7 +34,7 @@
     "@nesvet/n": "^1"
   },
   "devDependencies": {
-    "@nesvet/eslint-config": "^1",
+    "@nesvet/eslint-config": "^2.0.13",
     "@types/node": "^20",
     "typescript": "^5"
   }
