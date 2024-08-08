@@ -2,11 +2,11 @@ import { defaults } from "./defaults.js";
 import { type Options, type RequestMessage, type ResponseMessage } from "./types";
 
 
-type RequestListenerHandler = (...rest: unknown[]) => unknown;
+export type RequestListenerHandler = (...rest: unknown[]) => unknown;
 
-type RequestListenerHandlers = Record<string, RequestListenerHandler>;
+export type RequestListenerHandlers = Record<string, RequestListenerHandler>;
 
-type RequestListenerOptions = {
+export type RequestListenerOptions = {
 	handler?: RequestListenerHandler;
 	handlers?: RequestListenerHandlers;
 } & Options;
