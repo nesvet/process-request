@@ -2,7 +2,8 @@ import { defaults } from "./defaults.js";
 import { type Options, type RequestMessage, type ResponseMessage } from "./types";
 
 
-export type RequestListenerHandler = (...rest: unknown[]) => unknown;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type RequestListenerHandler = (...rest: any[]) => any;
 
 export type RequestListenerHandlers = Record<string, RequestListenerHandler>;
 

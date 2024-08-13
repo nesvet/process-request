@@ -33,7 +33,8 @@ export class RequestSender {
 	
 	#requestsMap = new Map();
 	
-	send(kind: string, ...args: unknown[]) {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	send(kind: string, ...args: any[]) {
 		return new Promise((resolve, reject) => {
 			
 			const id = this.#uid();
