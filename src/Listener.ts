@@ -1,5 +1,5 @@
 import { defaults } from "./defaults.js";
-import { type Options, type RequestMessage, type ResponseMessage } from "./types";
+import { Process, type Options, type RequestMessage, type ResponseMessage } from "./types";
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -14,7 +14,7 @@ export type RequestListenerOptions = {
 
 
 export class RequestListener {
-	constructor(process: NodeJS.Process, options?: RequestListenerHandler | RequestListenerHandlers | RequestListenerOptions) {
+	constructor(process: Process, options?: RequestListenerHandler | RequestListenerHandlers | RequestListenerOptions) {
 		this.#process = process;
 		
 		const {
@@ -47,7 +47,7 @@ export class RequestListener {
 		
 	}
 	
-	#process: NodeJS.Process;
+	#process;
 	
 	#requestHeader: string;
 	#responseHeader: string;
@@ -80,7 +80,7 @@ export class RequestListener {
 	};
 	
 	
-	static on(process: NodeJS.Process, options: RequestListenerHandler | RequestListenerHandlers | RequestListenerOptions) {
+	static on(process: Process, options: RequestListenerHandler | RequestListenerHandlers | RequestListenerOptions) {
 		return new RequestListener(process, options);
 	}
 	

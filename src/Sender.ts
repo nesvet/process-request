@@ -1,10 +1,10 @@
 import { uid } from "@nesvet/n";
 import { defaults } from "./defaults.js";
-import { type Options, type RequestMessage, type ResponseMessage } from "./types";
+import { Process, type Options, type RequestMessage, type ResponseMessage } from "./types";
 
 
 export class RequestSender {
-	constructor(process: NodeJS.Process, options?: Options) {
+	constructor(process: Process, options?: Options) {
 		this.#process = process;
 		
 		const {
@@ -24,7 +24,7 @@ export class RequestSender {
 		
 	}
 	
-	#process: NodeJS.Process;
+	#process;
 	
 	#requestHeader: string;
 	#responseHeader: string;
@@ -68,7 +68,7 @@ export class RequestSender {
 	};
 	
 	
-	static on(process: NodeJS.Process, options: Options) {
+	static on(process: Process, options: Options) {
 		return new RequestSender(process, options);
 	}
 	

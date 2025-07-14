@@ -1,3 +1,8 @@
+export type Process = {
+	on: (event: string | symbol, listener: (...args: any[]) => void) => void;
+	send: (message: any) => void;
+};
+
 export type Options = {
 	requestHeader?: string;
 	responseHeader?: string;
